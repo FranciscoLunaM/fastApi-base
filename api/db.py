@@ -6,7 +6,7 @@ from sqlmodel import create_engine,Session
 
 
 engine = create_engine("postgresql://root:root@localhost:5432/pruebas", echo=True)
-
+print("Database connection established.")
 def get_session():
     with Session(engine) as session:
         yield session

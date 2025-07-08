@@ -22,6 +22,7 @@ app.add_middleware(
 
 @app.get("/")
 async def test():
+    print("API is running")
     return {"message":"OK"}
 
 @app.get("/test")
