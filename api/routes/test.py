@@ -1,4 +1,5 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, Request
+from .limiter import limiter
 #from ..database.db import get_session
 #from ..models.test_models import *
 
@@ -6,5 +7,6 @@ app=FastAPI()
 router=APIRouter(prefix="/test",tags=["test"])
 
 @router.get("/")
-async def test():
+@limiter.limit("1/second")
+async def test(request:Request):
     return {"message":"Test successful"}
